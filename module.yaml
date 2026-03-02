@@ -1,0 +1,21 @@
+name: gitconfig
+description: Git configuration — delta diff viewer, catppuccin-mocha theme, useful aliases
+platforms:
+  - macos
+  - linux
+links:
+  - source: .gitconfig
+    target: ~/.gitconfig
+dependencies:
+  brew:
+    - git
+    - delta
+    - git-lfs
+  apt:
+    - git
+    - git-delta
+    - git-lfs
+  pacman:
+    - git
+    - git-delta
+    - git-lfs

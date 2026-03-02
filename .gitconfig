@@ -1,0 +1,90 @@
+[include]
+  path = ~/.gitconfig.local
+[delta]
+	features = catppuccin-mocha
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	editor = nvim
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  dark = true
+  true-color = always
+  line-numbers = true
+  side-by-side = true
+  features = catppuccin-mocha
+[alias]
+  gp = log --graph
+  gpa = log --graph --all
+  pl = pull
+  ps = push
+  st = status
+  c= commit
+  tline = "!git tag --sort=-creatordate | tr '\\n' ' '"
+  tlgline= "!git for-each-ref --sort=-taggerdate --format='| %(tag) | %(objectname:short) | %(contents:subject)' refs/tags"
+  tlg = "!git for-each-ref --sort=-taggerdate --format='-------------------------------- %0a %(tag) | %(objectname:short) | %(taggerdate:short) %0a --- %(taggername) %0a %(subject)%0a %0a %(body)' refs/tags --count=5"
+  blg = "log  --pretty='%C(bold)-------------------------------------------------------------------------------------------%Creset%n%Cred%h%Creset - %H %C(bold yellow)<%an>%Creset %Cgreen(%ar)%n%s%C(auto)%d%Creset %n%n%b%n%C(bold)Status:' --all --stat --graph"
+  bl = "log  --pretty='%C(bold)-------------------------------------------------------------------------------------------%Creset%n%Cred%h%Creset - %H %C(bold yellow)<%an>%Creset %Cgreen(%ar)%n%s%C(auto)%d%Creset %n%n%b%n%C(bold)Status:' --all --stat"
+  dt = difftool
+  dp= add . -p
+  di= add -i
+  lod="log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
+  lods="log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
+  glog="log --oneline --decorate --graphr"
+  loga="log --oneline --decorate --graph --all"
+  lol="log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'"
+  lola="log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all"
+  lols="log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --stat"
+  lp=_git_log_prettily
+[init]
+  defaultBranch = main
+[diff]
+  tool = nvimdiff
+  colorMoved = default
+[merge]
+  conflictstyle = diff3
+[difftool]
+  prompt = true
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[fetch]
+	writeCommitGraph = true
+; ------------------
+; catppuccin
+; -----------------=
+[delta "catppuccin-mocha"]
+	blame-palette = "#1e1e2e #181825 #11111b #313244 #45475a"
+	commit-decoration-style = "box ul"
+	dark = true
+	file-decoration-style = "#cdd6f4"
+	file-style = "#cdd6f4"
+	hunk-header-decoration-style = "box ul"
+	hunk-header-file-style = "bold"
+	hunk-header-line-number-style = "bold #a6adc8"
+	hunk-header-style = "file line-number syntax"
+	line-numbers = true
+	line-numbers-left-style = "#6c7086"
+	line-numbers-minus-style = "bold #f38ba8"
+	line-numbers-plus-style = "bold #a6e3a1"
+	line-numbers-right-style = "#6c7086"
+	line-numbers-zero-style = "#6c7086"
+	minus-emph-style = "bold syntax #53394c"
+	minus-style = "syntax #35293b"
+	plus-emph-style = "bold syntax #40504b"
+	plus-style = "syntax #2c333a"
+	map-styles = \
+		bold purple => syntax "#494060", \
+		bold blue => syntax "#394361", \
+		bold cyan => syntax "#384d5e", \
+		bold yellow => syntax "#544f4e"
+	syntax-theme = "Catppuccin Mocha"
