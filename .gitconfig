@@ -59,6 +59,10 @@
 	sort = -committerdate
 [fetch]
 	writeCommitGraph = true
+[user]
+	name = vinizap4 
+	email = vinizap4@outlook.com 
+
 ; ------------------
 ; catppuccin
 ; -----------------=
