@@ -37,11 +37,22 @@ echo "→ Detected OS: $OS, Package Manager: $PM"
 install_deps() {
   case "$PM" in
     brew)   brew install git delta git-lfs 2>/dev/null || true ;;
-    apt)    sudo apt update && sudo apt install -y git git-delta git-lfs 2>/dev/null || true ;;
-    pacman) sudo pacman -S --noconfirm git git-delta git-lfs 2>/dev/null || true ;;
+    apt)    sudo apt-get update -qq && sudo apt-get install -y git git-delta git-lfs 2>/dev/null || true ;;
+    pacman) sudo pacman -S --noconfirm --needed git git-delta git-lfs 2>/dev/null || true ;;
     dnf)    sudo dnf install -y git git-delta git-lfs 2>/dev/null || true ;;
     zypper) sudo zypper install -y git git-delta git-lfs 2>/dev/null || true ;;
   esac
+
+  # delta fallback: install via cargo if not available
+  if ! command -v delta &>/dev/null; then
+    if command -v cargo &>/dev/null; then
+      echo "→ delta not found, installing via cargo..."
+      cargo install git-delta 2>/dev/null || true
+    else
+      echo "→ delta not available via $PM. Install cargo or download from:"
+      echo "  https://github.com/dandavison/delta/releases"
+    fi
+  fi
 }
 
 echo "→ Installing dependencies..."

@@ -19,3 +19,11 @@ dependencies:
     - git
     - git-delta
     - git-lfs
+  dnf:
+    - git
+    - git-delta
+    - git-lfs
+  zypper:
+    - git
+    - git-delta
+    - git-lfs
