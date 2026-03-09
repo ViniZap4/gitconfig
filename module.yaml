@@ -1,5 +1,5 @@
 name: gitconfig
-description: Git configuration — delta diff viewer, catppuccin-mocha theme, useful aliases
+description: Git configuration — delta diff viewer, lazygit TUI, catppuccin-mocha theme, useful aliases
 platforms:
   - macos
   - linux
@@ -11,6 +11,7 @@ dependencies:
     - git
     - delta
     - git-lfs
+    - lazygit
   apt:
     - git
     - git-delta
@@ -19,6 +20,7 @@ dependencies:
     - git
     - git-delta
     - git-lfs
+    - lazygit
   dnf:
     - git
     - git-delta
